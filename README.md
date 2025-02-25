@@ -23,10 +23,8 @@ cd insecure-labs
 # Construir y ejecutar los contenedores
 docker-compose up --build -d
 ```
-La aplicación estará disponible en `http://localhost:5000`.
 
-## 🔍 Laboratorios Disponibles
-### 1️⃣ SQL Injection (SQLi-Lab)
+## 1️⃣ SQL Injection (SQLi-Lab)
 - Aplicación vulnerable a inyección SQL en la búsqueda de productos.
 - URL: `/buscar?nombre=producto`
 
@@ -34,11 +32,6 @@ Prueba un payload como en la barra de búsqueda:
 ```sh
 ' union select user(),(select group_concat(username,':', password) from users),3 -- -
 ```
-
-### Próximos Laboratorios:
-- **Cross-Site Scripting (XSS-Lab)**
-- **Command Injection (CMDi-Lab)**
-- **Path Traversal (LFI/RFI-Lab)**
 
 ## ⚠️ Advertencia
 Este proyecto es solo para **fines educativos y de investigación**. No se debe utilizar en entornos de producción ni para actividades malintencionadas.

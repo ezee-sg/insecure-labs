@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    h4 {
+        color: blue;
+    }
+
+    .invoice-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: red;
+    }
+
+    .invoice-details, .invoice-summary {
+        margin-bottom: 30px;
+    }
+
+    .invoice-summary th, .invoice-summary td {
+        text-align: right;
+    }
+
+    .invoice-summary th {
+        padding-right: 20px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 12px;
+    }
+
+</style>
+<body class="container mt-5">
+
+    <div class="header">
+        <h2 class="invoice-title">Datos de la compra</h2>
+    </div>
+
+    <div class="invoice-details">
+        <h4>Detalles del Cliente:</h4>
+        <p><strong>Nombre:</strong> {{ factura.cliente }}</p>
+        <p><strong>Dirección:</strong> {{ factura.direccion }}</p>
+    </div>
+
+    <div class="invoice-details">
+        <h4>Detalles del Producto:</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ factura.producto }}</td>
+                    <td>{{ factura.cantidad }}</td>
+                    <td>{{ factura.precio }} €</td>
+                    <td>{{ factura.cantidad * factura.precio }} €</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="invoice-summary">
+        <h4>Resumen de la Factura:</h4>
+        <table class="table">
+            <tr>
+                <th>Subtotal:</th>
+                <td>{{ factura.cantidad * factura.precio }} €</td>
+            </tr>
+            <tr>
+                <th>Impuestos (10%):</th>
+                <td>{{ (factura.cantidad * factura.precio * 0.10) | round(2) }} €</td>
+            </tr>
+            <tr>
+                <th>Total:</th>
+                <td>{{ (factura.cantidad * factura.precio * 1.10) | round(2) }} €</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="invoice-details">
+        <h4>Descripción:</h4>
+        <p>{{ factura.descripcion }}</p>
+    </div>
+
+</body>
+</html>

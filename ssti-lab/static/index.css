@@ -1,0 +1,33 @@
+body {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+h2 {
+    color: #4da3ff;
+}
+
+.form-label {
+    color: #ddd;
+}
+
+.form-control {
+    background-color: #2c2c2c;
+    color: white;
+    border: 1px solid #555;
+}
+
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f8f9fa;
+}
+
+.card {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+}
