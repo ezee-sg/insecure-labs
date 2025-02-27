@@ -34,14 +34,25 @@ services:
   #   environment:
   #     - FLASK_ENV=development
   #   command: ["python", "app.py"]
-  lfi-lab:
-    container_name: lfi-lab
+  # lfi-lab:
+  #   container_name: lfi-lab
+  #   build:
+  #     context: ./lfi-lab
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5002:80"
+  #   environment:
+  #     - APACHE_DOCUMENT_ROOT=/var/www/html
+
+  xxe-lab:
+    container_name: xxe-lab
     build:
-      context: ./lfi-lab
+      context: ./xxe-lab
       dockerfile: Dockerfile
     ports:
-      - "5002:80"
+      - "5003:5000"
     environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - FLASK_ENV=development
+    command: ["python", "app.py"]
   
 

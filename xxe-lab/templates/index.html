@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝Portal de Reportes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📝Portal de Reportes</h1>
+        <p>Introduce los datos del reporte:</p>
+        
+        <form id="report-form" class="form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <button type="button" onclick="sendReport()">Enviar Reporte</button>
+        </form>
+    </div>
+
+    <script>
+        function sendReport() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let description = document.getElementById("description").value;
+    
+            let xmlData = `<?xml version="1.0" encoding="UTF-8"?>
+            <report>
+                <name>${name}</name>
+                <email>${email}</email>
+                <description>${description}</description>
+            </report>`;
+    
+            let base64Data = btoa(unescape(encodeURIComponent(xmlData)));
+    
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/submit_report", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+    
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        window.location.href = "/reports";
+                    } else {
+                        alert("Error: " + xhr.responseText);
+                    }
+                }
+            };
+    
+            let data = JSON.stringify({ "report": base64Data });
+    
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
