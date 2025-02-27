@@ -1,6 +1,6 @@
-from flask import Flask, request, render_template, jsonify, redirect, url_for
+from flask import Flask, request, render_template, jsonify
 import base64
-import xml.etree.ElementTree as ET
+from lxml import etree
 
 app = Flask(__name__)
 
@@ -22,7 +22,11 @@ def submit_report():
 
         xml_data = base64.b64decode(xml_base64).decode("utf-8")
 
-        root = ET.fromstring(xml_data)
+        xml_bytes = xml_data.encode('utf-8')
+
+        parser = etree.XMLParser(resolve_entities=True)
+        root = etree.fromstring(xml_bytes, parser=parser)
+
         name = root.find("name").text
         email = root.find("email").text
         description = root.find("description").text
@@ -39,6 +43,7 @@ def submit_report():
         })
 
         return jsonify({"message": "Reporte enviado correctamente."}), 200
+
     except Exception as e:
         return jsonify({"error": f"Error procesando el reporte: {str(e)}"}), 400
 
