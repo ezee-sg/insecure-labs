@@ -19,3 +19,6 @@ venv/
 
 # Python virtual environment
 .venv/
+
+# Node
+node_modules/
