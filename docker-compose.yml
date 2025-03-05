@@ -55,24 +55,34 @@ services:
   #     - FLASK_ENV=development
   #   command: ["python", "app.py"]
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./nosqli-lab/init.js:/docker-entrypoint-initdb.d/init.js
+  # mongo:
+  #   image: mongo
+  #   container_name: mongo
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - ./nosqli-lab/init.js:/docker-entrypoint-initdb.d/init.js
   
-  nosqli-lab:
-    container_name: nosqli-lab
-    restart: always
+  # nosqli-lab:
+  #   container_name: nosqli-lab
+  #   restart: always
+  #   build:
+  #     context: ./nosqli-lab
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - mongo
+  #   ports:
+  #     - "5004:3000"
+
+  rfi-lab:
+    container_name: rfi-lab
     build:
-      context: ./nosqli-lab
+      context: ./rfi-lab
       dockerfile: Dockerfile
-    depends_on:
-      - mongo
     ports:
-      - "5004:3000"
+      - "5005:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
   
 
