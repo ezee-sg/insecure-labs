@@ -6,8 +6,8 @@ Repositorio de laboratorios vulnerables para la realización de mi Proyecto de F
 **insecure-labs** es un conjunto de entornos diseñados para el aprendizaje y la práctica de técnicas de seguridad ofensiva. Cada laboratorio simula una aplicación con vulnerabilidades específicas, permitiendo su explotación en un entorno controlado.
 
 ## 🚀 Tecnologías Utilizadas
-- **Backend:** Flask (Python)
-- **Base de Datos:** MySQL
+- **Backend:** Flask (Python), PHP, Express (NodeJS)
+- **Bases de Datos:** MySQL, MongoDB
 - **Contenerización:** Docker & Docker Compose
 
 ## 🛠️ Instalación y Ejecución

