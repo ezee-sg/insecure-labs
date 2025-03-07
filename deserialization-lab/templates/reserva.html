@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Mesa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Reserva tu Mesa</h2>
+        <form method="POST" action="/reservar">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+
+            <label>Fecha:</label>
+            <input type="date" name="fecha" required>
+
+            <label>Hora:</label>
+            <input type="time" name="hora" required>
+
+            <label>Número de personas:</label>
+            <input type="number" name="personas" min="1" required>
+
+            <button type="submit">Confirmar Reserva</button>
+        </form>
+
+        {% if reserva %}
+        <div class="reserva-info">
+            <h3>Reserva Confirmada</h3>
+            <p><strong>Nombre:</strong> {{ reserva.nombre }}</p>
+            <p><strong>Fecha:</strong> {{ reserva.fecha }}</p>
+            <p><strong>Hora:</strong> {{ reserva.hora }}</p>
+            <p><strong>Número de personas:</strong> {{ reserva.personas }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

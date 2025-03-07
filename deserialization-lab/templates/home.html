@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Delicioso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Restaurante Delicioso</h1>
+        <p>Gastronomía de alta calidad con los mejores ingredientes</p>
+    </header>
+
+    <section class="info">
+        <h2>Sobre Nosotros</h2>
+        <p>Ubicado en el corazón de la ciudad, nuestro restaurante ofrece una experiencia única con platos exquisitos y un ambiente acogedor.</p>
+        <h3>Horario:</h3>
+        <p>Lunes a Domingo: 12:00 PM - 11:00 PM</p>
+    </section>
+
+    <section class="reserva">
+        <h2>Haz tu Reserva</h2>
+        <p>Garantiza tu mesa ahora y disfruta de nuestra gastronomía.</p>
+        <a href="/reserva" class="btn">Reservar Ahora</a>
+    </section>
+</body>
+</html>

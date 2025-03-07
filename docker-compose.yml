@@ -75,14 +75,25 @@ services:
   #   ports:
   #     - "5004:3000"
 
-  rfi-lab:
-    container_name: rfi-lab
+  # rfi-lab:
+  #   container_name: rfi-lab
+  #   build:
+  #     context: ./rfi-lab
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5005:80"
+  #   environment:
+  #     - APACHE_DOCUMENT_ROOT=/var/www/html
+
+  deserialization-lab:
+    container_name: deserialization-lab
     build:
-      context: ./rfi-lab
+      context: ./deserialization-lab
       dockerfile: Dockerfile
     ports:
-      - "5005:80"
+      - "5006:5000"
     environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - FLASK_ENV=development
+    command: ["python", "app.py"]
   
 
