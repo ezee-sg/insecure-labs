@@ -85,15 +85,36 @@ services:
   #   environment:
   #     - APACHE_DOCUMENT_ROOT=/var/www/html
 
-  deserialization-lab:
-    container_name: deserialization-lab
+  # deserialization-lab:
+  #   container_name: deserialization-lab
+  #   build:
+  #     context: ./deserialization-lab
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5006:5000"
+  #   environment:
+  #     - FLASK_ENV=development
+  #   command: ["python", "app.py"]
+
+  # ssrf-lab:
+  #   container_name: ssrf-lab
+  #   build:
+  #     context: ./ssrf-lab
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5007:5000"
+  #   environment:
+  #     - FLASK_ENV=development
+
+  log-poisoning-lab:
+    container_name: log-poisoning-lab
     build:
-      context: ./deserialization-lab
+      context: ./log-poisoning-lab
       dockerfile: Dockerfile
     ports:
-      - "5006:5000"
+      - "5008:80"
+      - "2222:22"
     environment:
-      - FLASK_ENV=development
-    command: ["python", "app.py"]
+      - APACHE_DOCUMENT_ROOT=/var/www/html
   
 
