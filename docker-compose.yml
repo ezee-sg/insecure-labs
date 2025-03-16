@@ -96,25 +96,43 @@ services:
   #     - FLASK_ENV=development
   #   command: ["python", "app.py"]
 
-  # ssrf-lab:
-  #   container_name: ssrf-lab
-  #   build:
-  #     context: ./ssrf-lab
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "5007:5000"
-  #   environment:
-  #     - FLASK_ENV=development
-
-  log-poisoning-lab:
-    container_name: log-poisoning-lab
+  ssrf-lab:
+    container_name: ssrf-lab
     build:
-      context: ./log-poisoning-lab
+      context: ./ssrf-lab/web_server
       dockerfile: Dockerfile
     ports:
-      - "5008:80"
-      - "2222:22"
+      - "5007:5000"
+    privileged: true
+    depends_on:
+      - ssrf-api
+    networks:
+      - ssrf_network
     environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - FLASK_ENV=development
+    
+  ssrf-api:
+    container_name: ssrf-api
+    build:
+      context: ./ssrf-lab/api
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - ssrf_network
+
+networks:
+  ssrf_network:
+
+  # log-poisoning-lab:
+  #   container_name: log-poisoning-lab
+  #   build:
+  #     context: ./log-poisoning-lab
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5008:80"
+  #     - "2222:22"
+  #   environment:
+  #     - APACHE_DOCUMENT_ROOT=/var/www/html
   
 
