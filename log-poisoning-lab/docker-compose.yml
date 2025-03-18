@@ -1,0 +1,11 @@
+services:
+  log-poisoning-lab:
+    container_name: log-poisoning-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5008:80"
+      - "2222:22"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html

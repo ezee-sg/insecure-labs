@@ -1,0 +1,10 @@
+services:
+  rfi-lab:
+    container_name: rfi-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5005:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
