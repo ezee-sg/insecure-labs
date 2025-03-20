@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function addField(sectionId, placeholder) {
+            let container = document.getElementById(sectionId);
+            let input = document.createElement("input");
+            input.type = "text";
+            input.name = sectionId + "[]";
+            input.placeholder = placeholder;
+            input.classList.add("dynamic-input");
+            container.appendChild(input);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Currículum Vitae</h1>
+        <form method="POST" action="/">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required placeholder="Escribe tu nombre completo">
+
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" required placeholder="Escribe tu dirección">
+
+            <label for="description">Descripción Personal:</label>
+            <textarea id="description" name="description" rows="4" required placeholder="Breve presentación sobre ti"></textarea>
+
+            <label>Experiencia Laboral:</label>
+            <div id="experience">
+                <input type="text" name="experience[]" placeholder="Añade una experiencia laboral">
+            </div>
+            <button type="button" class="add-btn" onclick="addField('experience', 'Añade otra experiencia laboral')">Agregar más</button>
+
+            <label>Educación:</label>
+            <div id="education">
+                <input type="text" name="education[]" placeholder="Añade un estudio">
+            </div>
+            <button type="button" class="add-btn" onclick="addField('education', 'Añade otro estudio')">Agregar más</button>
+
+            <button type="submit" class="submit-btn">Generar CV</button>
+        </form>
+    </div>
+</body>
+</html>
