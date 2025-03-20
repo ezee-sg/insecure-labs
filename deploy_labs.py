@@ -22,6 +22,7 @@ laboratorios = {
     "7": ("SSRF Lab", "ssrf-lab"),
     "8": ("SSTI Lab", "ssti-lab"),
     "9": ("XXE Lab", "xxe-lab"),
+    "10": ("LaTeX Injection Lab", "latex-injection-lab"),
 }
 
 def obtener_contenedores_activos():

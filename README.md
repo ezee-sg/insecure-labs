@@ -19,10 +19,24 @@ Repositorio de laboratorios vulnerables para la realización de mi Proyecto de F
 # Clonar el repositorio
 git clone https://github.com/tu-usuario/insecure-labs.git
 cd insecure-labs
+cd {nombre_laboratorio}
 
 # Construir y ejecutar los contenedores
 docker-compose up --build -d
 ```
+
+### Forma alternativa
+
+```sh
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/insecure-labs.git
+cd insecure-labs
+
+# Ejecutar un script para gestionar los laboratorios
+python deploy_labs.py
+```
+
+![Herramienta para gestionar los laboratorios](manage_labs.png)
 
 ## ⚠️ Advertencia
 Este proyecto es solo para **fines educativos y de investigación**. No se debe utilizar en entornos de producción ni para actividades malintencionadas.
