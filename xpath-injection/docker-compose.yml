@@ -1,0 +1,11 @@
+services:
+  xpath-injection-lab:
+    container_name: xpath-injection-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5010:5000"
+    environment:
+      - FLASK_ENV=development
+    command: ["python", "app.py"]

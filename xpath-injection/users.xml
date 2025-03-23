@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<users>
+    <user>
+        <name>Carlos Vazquez</name>
+        <username>carlos</username>
+        <password>SuperSecret123$!</password>
+        <admin>false</admin>
+        <email>carlos@xpath.com</email>
+    </user>
+    <user>
+        <name>Alex Suarez</name>
+        <username>alex</username>
+        <password>davidPass$456!!</password>
+        <admin>false</admin>
+        <email>alex@xpath.com</email>
+    </user>
+    <user>
+        <name>Eric Montis</name>
+        <username>eric</username>
+        <password>GuessMeIfYouCan</password>
+        <admin>true</admin>
+        <email>eric@xpath.com</email>
+    </user>
+</users>
