@@ -1,15 +1,15 @@
-CREATE DATABASE IF NOT EXISTS shop;
-USE shop;
+CREATE DATABASE IF NOT EXISTS tienda;
+USE tienda;
 
 -- Tabla de productos
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(10,2) NOT NULL
+    nombre VARCHAR(255) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL
 );
 
 -- Insertar algunos productos
-INSERT INTO products (name, price) VALUES
+INSERT INTO productos (nombre, precio) VALUES
 ('Laptop Hacker', 999.99),
 ('USB Rubber Ducky', 49.99),
 ('WiFi Pineapple', 199.99),
@@ -17,14 +17,14 @@ INSERT INTO products (name, price) VALUES
 ('Lockpick Set', 29.99);
 
 -- Tabla de usuarios
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    usuario VARCHAR(255) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL
 );
 
 -- Insertar usuarios
-INSERT INTO users (username, password) VALUES
+INSERT INTO usuarios (usuario, contrasena) VALUES
 ('admin', 'admin123$!'),
 ('paco', 'megustanlasbasesdedatos'),
 ('alberto', 'alberto_1980');

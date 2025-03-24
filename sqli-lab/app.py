@@ -8,7 +8,7 @@ def get_db_connection():
         host='sqli-db',
         user='root',
         password='root',
-        database='shop'
+        database='tienda'
     )
     return connection
 
@@ -16,25 +16,25 @@ def get_db_connection():
 def index():
     connection = get_db_connection()
     cursor = connection.cursor()
-    cursor.execute('SELECT id, name, price FROM products')
-    products = cursor.fetchall()
+    cursor.execute('SELECT id, nombre, precio FROM productos')
+    productos = cursor.fetchall()
     cursor.close()
     connection.close()
-    return render_template('index.html', products=products)
+    return render_template('index.html', productos=productos)
 
-@app.route('/search')
+@app.route('/buscar')
 def buscar():
-    name = request.args.get('name')
+    name = request.args.get('nombre')
     connection = get_db_connection()
     cursor = connection.cursor()
 
-    query = "SELECT id, name, price FROM products WHERE name LIKE '%" + name + "%'"
+    query = "SELECT id, nombre, precio FROM productos WHERE nombre LIKE '%" + name + "%'"
     cursor.execute(query)
 
-    products = cursor.fetchall()
+    productos = cursor.fetchall()
     cursor.close()
     connection.close()
-    return jsonify({'products': products})
+    return jsonify({'productos': productos})
 
 
 if __name__ == '__main__':
