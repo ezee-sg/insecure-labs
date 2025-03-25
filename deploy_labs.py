@@ -1,4 +1,4 @@
-import os, signal, sys, time
+import os, signal, sys, time, re
 from termcolor import colored
 
 def clear_screen():
@@ -6,8 +6,8 @@ def clear_screen():
 
 # CTRL + C
 def def_handler(sig, frame):
-    detener_todos()
-    sys.exit(0)
+    print(colored("\n\n👋  Saliendo del programa...\n\n", "yellow"))
+    sys.exit(1)
 
 signal.signal(signal.SIGINT, def_handler)
 
@@ -26,12 +26,24 @@ laboratorios = {
     "11": ("XPath Injection Lab", "xpath-injection-lab"),
 }
 
+# Obtiene el puerto de un laboratorio
+def obtener_puerto(ruta):
+    compose_file = f"{ruta}/docker-compose.yml"
+    if not os.path.exists(compose_file):
+        return "N/A"
+    
+    with open(compose_file, 'r') as file:
+        contenido = file.read()
+    
+    match = re.search(r'\s*-\s*"(\d+):\d+"', contenido)
+    return match.group(1) if match else "N/A"
+
 def obtener_contenedores_activos():
-    activos = []
+    activos = {}
     for key, (_, ruta) in laboratorios.items():
         estado = os.popen(f"docker compose -f {ruta}/docker-compose.yml ps --services").read().strip()
         if estado:
-            activos.append(key)
+            activos[key] = obtener_puerto(ruta)
     return activos
 
 def mostrar_menu():
@@ -39,8 +51,13 @@ def mostrar_menu():
     activos = obtener_contenedores_activos()
     print(colored("\n\n--- Selecciona una opción ---\n", "cyan"))
     for key, (nombre, _) in laboratorios.items():
-        estado = colored("✔", "green") if key in activos else colored("✘", "red")
-        print(f"{key}. {nombre} {estado}")
+        if key in activos:
+            estado = colored("✔", "green")
+            puerto = colored(f"(http://127.0.0.1:{activos[key]})",'green')
+        else:
+            estado = colored("✘", "red")
+            puerto = ""
+        print(f"{key}. {nombre} {estado} {puerto}")
     print(colored("x. Detener todos los laboratorios activos", "red"))
     print(colored("0. Salir", "yellow"))
 
@@ -69,10 +86,10 @@ def detener_todos():
         return
     
     print(colored("\n\n🛑  Deteniendo laboratorios activos...\n\n", "red"))
-    for key in activos:
+    for key in activos.keys():
         _, ruta = laboratorios[key]
         os.system(f"docker compose -f {ruta}/docker-compose.yml down --rmi all --volumes --remove-orphans")
-
+    
     barra_progreso()
 
 def main():

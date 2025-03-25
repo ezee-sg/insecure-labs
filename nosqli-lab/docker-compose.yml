@@ -1,13 +1,4 @@
 services:
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./init.js:/docker-entrypoint-initdb.d/init.js
-  
   nosqli-lab:
     container_name: nosqli-lab
     restart: always
@@ -18,3 +9,12 @@ services:
       - mongo
     ports:
       - "5004:3000"
+  
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./init.js:/docker-entrypoint-initdb.d/init.js

@@ -1,16 +1,4 @@
 services:
-  sqli-db:
-    container_name: sqli-db
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tienda
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
   sqli-lab:
     container_name: sqli-lab
     build:
@@ -23,3 +11,15 @@ services:
     environment:
       - FLASK_ENV=development
     command: ["python", "app.py"]
+  
+  sqli-db:
+    container_name: sqli-db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tienda
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
