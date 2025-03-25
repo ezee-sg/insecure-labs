@@ -23,6 +23,7 @@ laboratorios = {
     "8": ("SSTI Lab", "ssti-lab"),
     "9": ("XXE Lab", "xxe-lab"),
     "10": ("LaTeX Injection Lab", "latex-injection-lab"),
+    "11": ("XPath Injection Lab", "xpath-injection-lab"),
 }
 
 def obtener_contenedores_activos():

