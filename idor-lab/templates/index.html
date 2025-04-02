@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Eventos Disponibles</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.nombre }}</td>
+                <td>
+                    <form action="/comprar" method="POST" class="d-inline">
+                        <input type="hidden" name="evento_id" value="{{ evento.id }}">
+                        <input type="number" name="cantidad" min="1" value="1" required>
+                        <button type="submit" class="btn btn-primary">Comprar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Factura #{{ factura.id }}</h2>
+    <p>Evento: <strong>{{ factura.evento }}</strong></p>
+    <p>Cantidad de Entradas: <strong>{{ factura.cantidad }}</strong></p>
+    <img src="/{{ qr_path }}" alt="Código QR de la factura" class="img-fluid">
+</div>
+{% endblock %}

@@ -25,6 +25,7 @@ laboratorios = {
     "10": ("LaTeX Injection Lab", "latex-injection-lab"),
     "11": ("XPath Injection Lab", "xpath-injection-lab"),
     "12": ("File Upload Lab", "file-upload-lab"),
+    "13": ("IDOR Lab", "idor-lab"),
 }
 
 # Obtiene el puerto de un laboratorio

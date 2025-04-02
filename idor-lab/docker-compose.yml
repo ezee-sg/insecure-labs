@@ -1,0 +1,25 @@
+services:
+  idor-lab:
+    container_name: idor-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - idor-db
+    ports:
+      - "5012:5000"
+    environment:
+      - FLASK_ENV=development
+    command: ["python", "app.py"]
+  
+  idor-db:
+    container_name: idor-db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: eventos
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
