@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session
 import qrcode
 import mysql.connector
-import os
 import hashlib
 
 app = Flask(__name__)
@@ -139,5 +138,4 @@ def ver_factura(factura_id):
     return render_template('ver_factura.html', factura=factura, tickets=tickets)
 
 if __name__ == '__main__':
-    os.makedirs("static/qrs", exist_ok=True)
     app.run(debug=True, host="0.0.0.0", port=5000)
