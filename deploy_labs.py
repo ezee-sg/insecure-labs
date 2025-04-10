@@ -26,6 +26,7 @@ laboratorios = {
     "11": ("XPath Injection Lab", "xpath-injection-lab"),
     "12": ("File Upload Lab", "file-upload-lab"),
     "13": ("IDOR Lab", "idor-lab"),
+    "14": ("Type Juggling Lab", "type-juggling-lab"),
 }
 
 # Obtiene el puerto de un laboratorio
