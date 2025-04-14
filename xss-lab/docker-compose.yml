@@ -8,3 +8,31 @@ services:
       - "5014:5000"
     environment:
       - FLASK_ENV=development
+    networks:
+      - xss-net
+
+  selenium:
+    image: selenium/standalone-firefox:latest
+    container_name: selenium
+    ports:
+      - "4444:4444"
+    shm_size: 2g
+    networks:
+      - xss-net
+
+  admin-bot:
+    build:
+      context: ./admin_bot
+    container_name: admin-bot
+    depends_on:
+      - xss-lab
+      - selenium
+    environment:
+      - SELENIUM_URL=http://selenium:4444/wd/hub
+      - APP_URL=http://xss-lab:5000
+    networks:
+      - xss-net
+
+networks:
+  xss-net:
+    driver: bridge
