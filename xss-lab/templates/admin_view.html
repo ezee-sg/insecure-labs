@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Mensajes Recibidos - Panel Admin{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h3 class="text-center text-dark mb-4">Mensajes Recibidos</h3>
+    <p class="text-center text-muted mb-5">Aquí puedes ver todos los mensajes que los usuarios han enviado a través del formulario de contacto.</p>
+
+    <div class="row">
+      {% for m in mensajes %}
+        <div class="col-md-6 mb-4">
+          <div class="card bg-white shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title">{{ m.nombre }} ({{ m.email }})</h5>
+            </div>
+            <div class="card-body text-dark">
+              <p class="card-text">{{ m.mensaje | safe }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+{% endblock %}

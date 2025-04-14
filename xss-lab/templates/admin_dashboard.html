@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h3 class="text-center text-dark mb-4">Panel de Administración</h3>
+    <p class="text-center text-muted mb-5">Bienvenido al panel de control. Desde aquí podrás gestionar los mensajes, ver estadísticas y realizar otras tareas administrativas.</p>
+
+    <div class="row">
+      <!-- Sección de Mensajes Recibidos -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 text-white">
+          <div class="card-header bg-primary">
+            <h5 class="card-title">📩 Ver mensajes recibidos</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Revisa los mensajes que los usuarios han enviado a través del formulario de contacto.</p>
+            <a href="{{ url_for('admin_messages') }}" class="btn btn-success w-100 rounded-pill shadow">Ver mensajes</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Estadísticas -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 text-white">
+          <div class="card-header bg-info">
+            <h5 class="card-title">📊 Estadísticas</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Consulta las estadísticas de la página: visitas, usuarios registrados, interacciones, etc.</p>
+            <a href="#" class="btn btn-primary w-100 rounded-pill shadow">Ver estadísticas</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Configuración -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 text-white">
+          <div class="card-header bg-warning">
+            <h5 class="card-title">⚙️ Configuración</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Ajusta las configuraciones generales de la página y de los usuarios.</p>
+            <a href="#" class="btn btn-warning w-100 rounded-pill shadow">Ir a configuración</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Sección de Administración de Usuarios -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-lg border-0 text-white">
+          <div class="card-header bg-info">
+            <h5 class="card-title">👥 Administración de Usuarios</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Gestiona los usuarios registrados, sus permisos y sus roles.</p>
+            <a href="#" class="btn btn-info w-100 rounded-pill shadow">Ver usuarios</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Notificaciones -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-lg border-0 text-white">
+          <div class="card-header bg-danger">
+            <h5 class="card-title">📢 Notificaciones</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Envía notificaciones a los usuarios registrados sobre nuevas actualizaciones y noticias importantes.</p>
+            <a href="#" class="btn btn-danger w-100 rounded-pill shadow">Enviar notificación</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

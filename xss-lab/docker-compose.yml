@@ -1,0 +1,10 @@
+services:
+  xss-lab:
+    container_name: xss-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5014:5000"
+    environment:
+      - FLASK_ENV=development
