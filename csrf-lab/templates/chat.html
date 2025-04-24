@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<div class="card chat-card">
+    <h2 class="chat-title">Chat general</h2>
+
+    <form method="post" class="mb-3">
+        <input type="text" name="mensaje" class="form-control" placeholder="Escribe un mensaje..." required>
+        <button type="submit" class="btn btn-primary mt-2 w-100">Enviar</button>
+    </form>
+
+    <div class="chat-mensajes" id="chat-mensajes">
+        {% for mensaje in mensajes %}
+            <div class="mensaje 
+                {% if mensaje['puesto'] == 'Administrador' %}admin
+                {% elif mensaje['puesto'] == 'Desarrollador' %}developer
+                {% elif mensaje['puesto'] == 'Gerente' %}manager
+                {% elif mensaje['puesto'] == 'Diseñador' %}designer
+                {% else %}user
+                {% endif %}">
+                <div class="mensaje-header">
+                    <strong>{{ mensaje['username'] }}</strong>
+                    <small class="text-muted">{{ mensaje['fecha'] }}</small>
+                </div>
+                <div class="mensaje-texto">{{ mensaje['mensaje']|safe }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    const chatBox = document.getElementById("chat-mensajes");
+    chatBox.scrollTop = chatBox.scrollHeight;
+</script>
+{% endblock %}

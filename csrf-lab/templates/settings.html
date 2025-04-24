@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Configuración{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Configuración de la cuenta</h2>
+        <hr>
+
+        <form method="post" action="{{ url_for('change_password') }}" class="mb-4">
+            <h4>Cambiar contraseña</h4>
+            <div class="form-group">
+                <label for="new">Nueva contraseña:</label>
+                <input type="password" class="form-control" name="new" id="new" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Actualizar contraseña</button>
+        </form>
+
+        <form method="post" action="#" class="mb-4">
+            <h4>Cambiar nombre de usuario</h4>
+            <div class="form-group">
+                <label for="new_username">Nuevo nombre de usuario:</label>
+                <input type="text" class="form-control" name="new_username" id="new_username" disabled>
+            </div>
+            <button type="submit" class="btn btn-secondary mt-2" disabled>Actualizar nombre</button>
+        </form>
+
+        <h4>Notificaciones</h4>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="notif1" disabled>
+            <label class="form-check-label" for="notif1">Recibir correos de actividad</label>
+        </div>
+        <div class="form-check mb-4">
+            <input type="checkbox" class="form-check-input" id="notif2" disabled>
+            <label class="form-check-label" for="notif2">Alertas importantes del sistema</label>
+        </div>
+
+        <h4>Preferencias de interfaz</h4>
+        <div class="form-group">
+            <label for="tema">Tema visual:</label>
+            <select class="form-control" id="tema" disabled>
+                <option>Claro</option>
+                <option>Oscuro</option>
+                <option>Sistema</option>
+            </select>
+        </div>
+    </div>
+</div>
+{% endblock %}

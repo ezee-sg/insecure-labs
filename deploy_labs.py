@@ -28,6 +28,7 @@ laboratorios = {
     "13": ("IDOR Lab", "idor-lab"),
     "14": ("Type Juggling Lab", "type-juggling-lab"),
     "15": ("Cross-Site Scripting Lab", "xss-lab"),
+    "16": ("Cross-Site Request Forgery Lab", "csrf-lab")
 }
 
 # Obtiene el puerto de un laboratorio

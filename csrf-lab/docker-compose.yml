@@ -1,0 +1,38 @@
+services:
+  csrf-lab:
+    container_name: csrf-lab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5015:5000"
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - csrf-net
+
+  selenium:
+    image: selenium/standalone-firefox:latest
+    container_name: selenium
+    ports:
+      - "4444:4444"
+    shm_size: 2g
+    networks:
+      - csrf-net
+
+  admin-bot:
+    build:
+      context: ./admin_bot
+    container_name: admin-bot
+    depends_on:
+      - csrf-lab
+      - selenium
+    environment:
+      - SELENIUM_URL=http://selenium:4444/wd/hub
+      - APP_URL=http://csrf-lab:5000
+    networks:
+      - csrf-net
+
+networks:
+  csrf-net:
+    driver: bridge
