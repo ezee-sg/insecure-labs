@@ -4,10 +4,8 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
-    # Habilitar claves foráneas
     c.execute('PRAGMA foreign_keys = ON')
 
-    # Crear tabla de puestos
     c.execute('''
         CREATE TABLE IF NOT EXISTS puestos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,7 +13,6 @@ def init_db():
         )
     ''')
 
-    # Crear tabla de usuarios
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,7 +24,6 @@ def init_db():
         )
     ''')
 
-    # Crear tabla de chat con clave foránea al id del usuario
     c.execute('''
         CREATE TABLE IF NOT EXISTS chat (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,14 +34,12 @@ def init_db():
         )
     ''')
 
-    # Insertar puestos por defecto si no existen
     c.execute('SELECT COUNT(*) FROM puestos')
     if c.fetchone()[0] == 0:
         puestos_default = ['Desarrollador', 'Gerente', 'Diseñador', 'Administrador']
         for puesto in puestos_default:
             c.execute('INSERT INTO puestos (nombre) VALUES (?)', (puesto,))
 
-    # Insertar usuarios por defecto si no existen
     c.execute('SELECT * FROM users WHERE username = ?', ('admin',))
     if not c.fetchone():
         c.execute('INSERT INTO users (username, password, puesto_id, is_admin) VALUES (?, ?, ?, ?)',
