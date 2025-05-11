@@ -20,6 +20,16 @@ STOCK = {
     "5": 443,
 }
 
+@app.route('/api', methods=['GET'])
+def api_info():
+    return jsonify({
+        "routes": {
+            "/api/matches": "Lista todos los partidos y su aforo",
+            "/api/stock?matchId=<id>&quantity=<cantidad>": "Consulta si hay suficientes entradas disponibles para un partido",
+        }
+    })
+
+
 @app.route('/api/matches', methods=['GET'])
 def list_matches():
     return jsonify({"matches": MATCHES})
