@@ -55,7 +55,7 @@ Si visitamos manualmente uno de ellos, podemos comprobar que se trata de una com
 
 ![Compra de otro usuario](images/compra_otro_usuario.png)
 
-Es importanrte destacar que esto ha sido posible ya que no existe ningún control de acceso en la base de datos. Una correcta implementación de esto sería comprobar si la factura en cuestión pertenece o no al usuario que hace la petición.
+Es importante destacar que esto ha sido posible ya que no existe ningún control de acceso en la base de datos. Una correcta implementación de esto sería comprobar si la factura en cuestión pertenece o no al usuario que hace la petición.
 
 
 

@@ -22,35 +22,6 @@ def close_db(error):
 def index():
     return redirect(url_for('dashboard')) if 'username' in session else redirect(url_for('login'))
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    alert = None
-
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        puesto_id = request.form['puesto_id']
-
-        if puesto_id == '4':
-            alert = {'type': 'danger', 'message': 'No puedes registrar un usuario como Administrador.'}
-            return render_template('register.html', alert=alert)
-
-        db = get_db()
-        try:
-            db.execute('INSERT INTO users (username, password, puesto_id) VALUES (?, ?, ?)', 
-                       (username, password, puesto_id))
-            db.commit()
-            alert = {'type': 'success', 'message': 'Usuario registrado exitosamente!'}
-            return redirect(url_for('login'))
-        except sqlite3.IntegrityError:
-            alert = {'type': 'danger', 'message': 'El usuario ya existe.'}
-            return render_template('register.html', alert=alert)
-
-    db = get_db()
-    puestos = db.execute('SELECT * FROM puestos WHERE nombre != "Administrador"').fetchall()
-    return render_template('register.html', puestos=puestos, alert=alert)
-
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
