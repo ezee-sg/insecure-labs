@@ -14,11 +14,10 @@ Inicio de sesión como el usuario "julian":
 
 Enlace malicioso escrito en el chat
 ```html
-<a href="http://192.168.1.61/pwned.html" target="_blank">Horas trabajadas</a>
+<a href="http://192.168.1.61/pwned.html" target="_blank">Hoja de tareas</a>
 ```
 
-![Estructura del enlace malicioso](images/chat1.png)
-![Enlace malicioso insertado](images/chat2.png)
+![Enlace malicioso insertado](images/mensajes_chat.png)
 
 Posteriormente, el atacante se pone en escucha por el puerto 80 mediante un servidor con python:
 
