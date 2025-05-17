@@ -3,11 +3,14 @@
 - Se trata de una ataque que hace uso de la ingeniería social para conseguir que el usuario víctima en cuestión pinche en enlaces que conlleven acciones desafortunadas para él. Si además el usuario víctima tiene privilegios en el sitio web, las consecuencias pueden llegar a ser bastante más graves.
 - En concreto, este laboratorio contempla un sistema de gestión de empleados en el que estos pueden intercambiar mensajes internos mediante un chat general. El vector de ataque está en que si un empleado malintencionado introduce un enlace malicioso en uno de los mensajes, otro usuario (víctima) puede clicar en él y realizar acciones involuntarias en el sistema.
 
-Vector de ataque completo:
+Para la demostración de este escenario, empezaremos con las credenciales de uno de los empleados del sistema (simulando que se las hemos robado):
+
+- **Usuario**: ana
+- **Contraseña**: anita62&/
 
 Inicio de sesión como el usuario "julian":
 
-![Inicio de sesión como julian](images/julian.png)
+![Inicio de sesión como julian](images/user_logged.png)
 
 Enlace malicioso escrito en el chat
 ```html
