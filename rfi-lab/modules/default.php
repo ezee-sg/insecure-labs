@@ -1,0 +1,1 @@
+<h3>No se ha encontrado el curso seleccionado, vuelve a probar más tarde.</h3>
