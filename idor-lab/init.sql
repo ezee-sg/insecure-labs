@@ -39,9 +39,9 @@ INSERT INTO eventos (nombre) VALUES
 
 
 INSERT INTO users (username, password) VALUES
-('luis', 'password1'),
-('maria', 'password2'),
-('lucas', 'password3');
+('luis', 'd3d908bc1ab18e19c4dfbc64fa6c0ca7b6de749f5f0dd07c7178c6d79d536cbd'), -- luis2020
+('maria', 'ecb66eaaf64a5c4b52e332e55f27ae37a70d3298183e6e06de0f9d025318bf43'), -- mariaa10
+('lucas', '9e4118dfa03ce2c0c19fd097faf6bbe6e7fb5924ff6c2376f27b4054248551c8'); -- lucas22
 
 INSERT INTO facturas (id, user_id, evento_id, cantidad) VALUES
 (10, 1, 2, 3),
